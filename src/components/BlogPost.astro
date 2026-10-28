@@ -1,0 +1,28 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { t, localePath, switchPath, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang; post: CollectionEntry<'blog'> }
+const { lang, post } = Astro.props;
+const s = t(lang);
+const { Content } = await render(post);
+---
+<Base lang={lang} title={post.data.title} description={post.data.description}>
+  <article class="container narrow">
+    <p><a href={localePath(lang, '/blog/')}>{s['blog.back']}</a></p>
+    <h1>{post.data.title}</h1>
+    <p class="muted meta">
+      <time datetime={post.data.date.toISOString()}>{post.data.date.toLocaleDateString(lang, { timeZone: 'UTC' })}</time>
+      · <a href={switchPath(lang, Astro.url.pathname)}>{s['blog.other']}</a>
+    </p>
+    <Content />
+  </article>
+</Base>
+
+<style>
+  .narrow { max-width: 48rem; padding-block: 3rem; }
+  .meta { font-size: 0.85rem; }
+  article :global(pre) { padding: 1rem; border-radius: 6px; overflow-x: auto; }
+  article :global(img) { border-radius: 6px; }
+</style>

@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import SocialLinks from './SocialLinks.astro';
+import { site } from '../config';
+import { projects } from '../data/projects';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+---
+<Base lang={lang}>
+  <section class="hero container">
+    <div>
+      <h1>{site.name}</h1>
+      <p class="role">{s['hero.role']}</p>
+      <p class="muted intro">{s['hero.intro']}</p>
+      <p class="actions">
+        <a class="btn btn-primary" href="#projects">{s['hero.cta']} ›</a>
+        <a class="btn btn-ghost" href={site.links.cv} target="_blank" rel="noopener">{s['hero.cv']}</a>
+      </p>
+    </div>
+    <img class="avatar" src={site.avatar} alt={site.name} width="320" height="320" />
+  </section>
+
+  <section id="about" class="container narrow">
+    <h2>{s['about.title']}</h2>
+    <p class="muted">{s['about.body']}</p>
+  </section>
+
+  <section id="projects" class="container">
+    <h2>{s['projects.title']}</h2>
+    <ul class="grid">
+      {projects.map((p) => (
+        <li class="card">
+          <h3>{p.title[lang]}</h3>
+          <p class="muted">{p.description[lang]}</p>
+          <p class="tags">{p.tags.map((tag) => <span>{tag}</span>)}</p>
+          <p class="card-links">
+            {p.repo && <a href={p.repo} target="_blank" rel="noopener">{s['projects.repo']}</a>}
+            {p.demo && <a href={p.demo} target="_blank" rel="noopener">{s['projects.demo']}</a>}
+          </p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section id="contact" class="container narrow">
+    <h2>{s['contact.title']}</h2>
+    <p class="muted">{s['contact.body']}</p>
+    <p class="actions">
+      <a class="btn btn-primary" href={`mailto:${site.email}`}>{s['contact.cta']}</a>
+      <SocialLinks />
+    </p>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    min-height: 70vh;
+  }
+  h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin: 0 0 0.5rem; }
+  h2 { font-size: 2rem; }
+  .role { color: var(--accent); font-weight: 700; margin: 0 0 1rem; }
+  .intro { max-width: 36rem; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 2rem; }
+  .avatar { justify-self: center; width: min(100%, 320px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
+  .narrow p { max-width: 48rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.5rem; list-style: none; padding: 0; }
+  .card { border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; background: var(--surface); }
+  .card h3 { margin-top: 0; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; }
+  .tags span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.5rem; }
+  .card-links { display: flex; gap: 1rem; margin-bottom: 0; }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 2rem; }
+    .avatar { grid-row: 1; width: 180px; }
+  }
+</style>
