@@ -1,14 +1,14 @@
 // Completá estos datos. Los links con TODO son placeholders.
 export const site = {
-  name: 'Tu Nombre',
-  email: 'TODO@example.com',
+  name: 'Facundo Zapata',
+  email: 'zapatafacundo17@gmail.com',
   avatar: '/avatar.svg',
   links: {
-    cv: 'https://TODO-link-a-tu-cv',
+    cv: 'placeholder.drive',
     github: 'https://github.com/TODO',
-    linkedin: 'https://www.linkedin.com/in/TODO',
-    youtube: 'https://www.youtube.com/@TODO',
-    x: 'https://x.com/TODO',
+    linkedin: 'https://www.linkedin.com/in/facundozapata/',
+    youtube: 'https://www.youtube.com/',
+    x: 'https://x.com/',
   },
   // Token de Cloudflare Web Analytics; vacío = sin analytics
   cfAnalyticsToken: '',
