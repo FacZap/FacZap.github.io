@@ -11,7 +11,7 @@ export const ui = {
     'theme.toggle': 'Cambiar tema claro/oscuro',
     'lang.switch': 'English',
     'hero.role': 'Ingeniero Electrónico | Desarrollador',
-    'hero.intro': 'Ingeniero Electrónico argentino. Automatización industrial. Software.',
+    'hero.intro': 'Ingeniero Electrónico. Automatización industrial. Software. Argentina.',
     'hero.cta': 'Portfolio',
     'hero.cv': 'Mi CV',
     'about.title': 'Sobre mí',
