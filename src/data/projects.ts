@@ -3,8 +3,8 @@ export const projects = [
   {
     title: { es: 'Proyecto de ejemplo', en: 'Example project' },
     description: {
-      es: 'Qué problema resuelve y qué aprendiste haciéndolo.',
-      en: 'What problem it solves and what you learned building it.',
+      es: 'Descripción.',
+      en: 'Description.',
     },
     tags: ['Astro', 'TypeScript'],
     repo: 'https://github.com/TODO/proyecto',

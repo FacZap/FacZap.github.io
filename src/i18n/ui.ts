@@ -36,7 +36,7 @@ export const ui = {
     'theme.toggle': 'Toggle light/dark theme',
     'lang.switch': 'Español',
     'hero.role': 'Electronics Engineer | Developer',
-    'hero.intro': ' Electronics Engineer from Argentina. PLC and Commissioning',
+    'hero.intro': ' Electronics Engineer from Argentina. PLC and Commissioning.',
     'hero.cta': 'See projects',
     'hero.cv': 'My resume',
     'about.title': 'About',

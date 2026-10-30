@@ -5,7 +5,7 @@ export const site = {
   avatar: '/avatar.svg',
   links: {
     cv: 'placeholder.drive',
-    github: 'https://github.com/TODO',
+    github: 'https://github.com/FacZap',
     linkedin: 'https://www.linkedin.com/in/facundozapata/',
     youtube: 'https://www.youtube.com/',
     x: 'https://x.com/',
