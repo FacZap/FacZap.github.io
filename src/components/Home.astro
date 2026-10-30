@@ -29,8 +29,14 @@ const s = t(lang);
   </section>
 
   <section id="projects" class="container">
-    <h2>{s['projects.title']}</h2>
-    <ul class="grid">
+    <div class="projects-head">
+      <h2>{s['projects.title']}</h2>
+      <div class="view-tools">
+        <button id="flow-toggle" class="tool" type="button" aria-label={s['projects.flow']} title={s['projects.flow']}>⇄</button>
+        <button id="count-toggle" class="tool" type="button" aria-label={s['projects.count']} title={s['projects.count']}>3</button>
+      </div>
+    </div>
+    <ul class="grid" id="projects-grid">
       {projects.map((p) => (
         <li class="card">
           <h3>{p.title[lang]}</h3>
@@ -55,6 +61,29 @@ const s = t(lang);
   </section>
 </Base>
 
+<script>
+  const grid = document.getElementById('projects-grid')!;
+  const flowBtn = document.getElementById('flow-toggle')!;
+  const countBtn = document.getElementById('count-toggle')!;
+  // Arranca con una cantidad que entre en pantalla; sin JS queda el auto-fill del CSS.
+  let n = innerWidth < 640 ? 1 : innerWidth < 1000 ? 2 : 3;
+  const render = () => {
+    grid.style.setProperty('--n', String(n));
+    countBtn.textContent = String(n);
+    flowBtn.textContent = grid.dataset.flow === 'col' ? '⇅' : '⇄';
+  };
+  grid.dataset.flow = 'row';
+  render();
+  flowBtn.addEventListener('click', () => {
+    grid.dataset.flow = grid.dataset.flow === 'col' ? 'row' : 'col';
+    render();
+  });
+  countBtn.addEventListener('click', () => {
+    n = (n % 4) + 1;
+    render();
+  });
+</script>
+
 <style>
   .hero {
     display: grid;
@@ -71,7 +100,28 @@ const s = t(lang);
   .avatar { justify-self: center; width: min(100%, 320px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
   .narrow p { max-width: 48rem; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.5rem; list-style: none; padding: 0; }
-  .card { border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; background: var(--surface); }
+  /* row: n ítems por fila; col: n ítems por columna, las columnas sobrantes scrollean en horizontal */
+  .grid[data-flow='row'] { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+  .grid[data-flow='col'] {
+    grid-auto-flow: column;
+    grid-template-rows: repeat(var(--n), auto);
+    grid-template-columns: none;
+    grid-auto-columns: minmax(16rem, 1fr);
+    overflow-x: auto;
+  }
+  .projects-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .view-tools { display: flex; gap: 0.5rem; }
+  .tool {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 4px;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .card { border:1px solid var(--border); border-radius: 6px; padding: 1.5rem; background: var(--surface); }
   .card h3 { margin-top: 0; }
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; }
   .tags span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.5rem; }
