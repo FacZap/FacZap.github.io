@@ -17,7 +17,7 @@ const s = t(lang);
       <p class="muted intro">{s['hero.intro']}</p>
       <p class="actions">
         <a class="btn btn-primary" href="#projects">{s['hero.cta']} ›</a>
-        <a class="btn btn-ghost" href={site.links.cv} target="_blank" rel="noopener">{s['hero.cv']}</a>
+        <a class="btn btn-ghost" href={site.links.cv[lang]}target="_blank" rel="noopener">{s['hero.cv']}</a>
       </p>
     </div>
     <img class="avatar" src={site.avatar} alt={site.name} width="320" height="320" />
