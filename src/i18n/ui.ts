@@ -15,7 +15,7 @@ export const ui = {
     'hero.cta': 'Portfolio',
     'hero.cv': 'Mi CV',
     'about.title': 'Sobre mí',
-    'about.body': '.',
+    'about.body': 'Egresado de Ingeniería Electrónica de la Universidad Nacional de Rosario, Argentina. Poseo experiencia en automatización industrial, PLCs y puesta en marcha de sistemas. Actualmente adentrandome en el desarrollo de software y herramientas propias para productividad personal y profesional. Mis intereses incluyen impresión 3D, robótica y electrónica embebida.',
     'projects.title': 'Proyectos',
     'projects.repo': 'Código',
     'projects.demo': 'Demo',
@@ -28,6 +28,7 @@ export const ui = {
     'blog.empty': 'Todavía no hay posts.',
     'blog.back': '← Volver al blog',
     'blog.other': 'Read in English',
+    'blog.linkedin': 'Desde LinkedIn',
   },
   en: {
     'nav.home': 'Home',
@@ -55,6 +56,7 @@ export const ui = {
     'blog.empty': 'No posts yet.',
     'blog.back': '← Back to blog',
     'blog.other': 'Leer en español',
+    'blog.linkedin': 'From LinkedIn',
   },
 } as const;
 
