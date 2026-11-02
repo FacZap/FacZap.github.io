@@ -65,7 +65,7 @@ export const projects = [
       en: 'AutoHotkey repository managed with Git and unified across three computers (merge conflicts and SSH authentication resolved), personal productivity apps (goals, tasks and habits), and Python scripts with APIs and external tools (Spotify via spotipy, a YouTube exporter with yt-dlp). All built, and kept improving, iteratively with Claude Code and other LLMs, driven by real needs.',
     },
     tags: ['AutoHotkey', 'Git', 'Python', 'spotipy', 'yt-dlp', 'Claude Code'],
-    repo: 'https://github.com/TODO/herramientas-propias',
+    repo: 'https://github.com/FacZap/AutoHotkey-Stash',
     demo: '',
   },
   {
