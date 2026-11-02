@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { postsFor } from '../blog';
+import { linkedinPosts } from '../data/linkedin';
 import { t, localePath, type Lang } from '../i18n/ui';
 
 interface Props { lang: Lang }
@@ -21,6 +22,14 @@ const posts = await postsFor(lang);
         </li>
       ))}
     </ul>
+    {linkedinPosts.length > 0 && (
+      <div class="embeds">
+        <h2>{s['blog.linkedin']}</h2>
+        {linkedinPosts.map((urn) => (
+          <iframe src={`https://www.linkedin.com/embed/feed/update/${urn}`} width="100%" height="550" loading="lazy" title="LinkedIn post" frameborder="0" allowfullscreen></iframe>
+        ))}
+      </div>
+    )}
   </section>
 </Base>
 
@@ -32,4 +41,6 @@ const posts = await postsFor(lang);
   h2 a { color: var(--text); text-decoration: none; }
   h2 a:hover { color: var(--accent); }
   time { font-size: 0.8rem; }
+  .embeds { margin-top: 2rem; }
+  .embeds iframe { display: block; border: 1px solid var(--border); border-radius: 6px; margin-block: 1rem; }
 </style>
