@@ -1,0 +1,41 @@
+---
+import { projects } from '../data/projects';
+import { t, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang; limit?: number }
+const { lang, limit } = Astro.props;
+const s = t(lang);
+---
+<ul class:list={['grid', { summary: limit }]} id="projects-grid">
+  {projects.slice(0, limit).map((p) => (
+    <li class="card">
+      <h3>{p.title[lang]}</h3>
+      <p class="muted">{(limit && p.summary?.[lang]) || p.description[lang]}</p>
+      <p class="tags">{p.tags.map((tag) => <span>{tag}</span>)}</p>
+      <p class="card-links">
+        {p.repo && <a href={p.repo} target="_blank" rel="noopener">{s['projects.repo']}</a>}
+        {p.demo && <a href={p.demo} target="_blank" rel="noopener">{s['projects.demo']}</a>}
+      </p>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.5rem; list-style: none; padding: 0; }
+  /* row: n ítems por fila; col: n ítems por columna, las columnas sobrantes scrollean en horizontal */
+  .grid[data-flow='row'] { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+  .grid[data-flow='col'] {
+    grid-auto-flow: column;
+    grid-template-rows: repeat(var(--n), auto);
+    grid-template-columns: none;
+    grid-auto-columns: minmax(16rem, 1fr);
+    overflow-x: auto;
+  }
+  .card { border:1px solid var(--border); border-radius: 6px; padding: 1.5rem; background: var(--surface); }
+  .card h3 { margin-top: 0; }
+  /* En el resumen del Home, la descripción se corta en 4 líneas con "…" */
+  .summary .card .muted { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; }
+  .tags span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.5rem; }
+  .card-links { display: flex; gap: 1rem; margin-bottom: 0; }
+</style>

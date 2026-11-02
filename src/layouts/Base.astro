@@ -45,7 +45,7 @@ const fullTitle = title ? `${title} · ${site.name}` : site.name;
         <ul class="links">
           <li><a href={home}>{s['nav.home']}</a></li>
           <li><a href={`${home}#about`}>{s['nav.about']}</a></li>
-          <li><a href={`${home}#projects`}>{s['nav.projects']}</a></li>
+          <li><a href={localePath(lang, '/projects/')}>{s['nav.projects']}</a></li>
           <li><a href={`${home}#contact`}>{s['nav.contact']}</a></li>
           <li><a href={localePath(lang, '/blog/')}>{s['nav.blog']}</a></li>
         </ul>
@@ -60,6 +60,30 @@ const fullTitle = title ? `${title} · ${site.name}` : site.name;
       <slot />
     </main>
     <footer class="container muted">© {new Date().getFullYear()} {site.name}</footer>
+
+    <script is:inline>
+      // Al cambiar de idioma, el primer elemento visible de <main> queda en la misma posición:
+      // las páginas es/en tienen la misma estructura, pero textos de distinto largo.
+      try {
+        const els = () => [...document.querySelectorAll('main *')];
+        const saved = JSON.parse(sessionStorage.getItem('langScroll'));
+        sessionStorage.removeItem('langScroll');
+        const restore = () => {
+          const el = els()[saved.i];
+          // instant: global.css usa scroll-behavior: smooth, y la animación se corta al cargar
+          if (el) scrollTo({ top: el.getBoundingClientRect().top + scrollY - saved.top, behavior: 'instant' });
+        };
+        if (saved && !location.hash) {
+          restore();
+          addEventListener('load', restore, { once: true }); // de nuevo cuando cargan fuentes e imágenes
+        }
+        document.querySelector('.lang').addEventListener('click', () => {
+          const list = els();
+          const i = scrollY > 0 ? list.findIndex((el) => el.getBoundingClientRect().top >= 0) : -1;
+          if (i >= 0) sessionStorage.setItem('langScroll', JSON.stringify({ i, top: list[i].getBoundingClientRect().top }));
+        });
+      } catch {}
+    </script>
 
     <script>
       const btn = document.getElementById('theme-toggle')!;
@@ -79,7 +103,7 @@ const fullTitle = title ? `${title} · ${site.name}` : site.name;
     position: sticky;
     top: 0;
     z-index: 10;
-    padding-top: 0.5rem;
+    padding-top: 0rem;
   }
   nav {
     display: flex;

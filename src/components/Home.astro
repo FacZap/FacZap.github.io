@@ -2,8 +2,8 @@
 import Base from '../layouts/Base.astro';
 import SocialLinks from './SocialLinks.astro';
 import { site } from '../config';
-import { projects } from '../data/projects';
-import { t, type Lang } from '../i18n/ui';
+import ProjectCards from './ProjectCards.astro';
+import { t, localePath, type Lang } from '../i18n/ui';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -29,26 +29,9 @@ const s = t(lang);
   </section>
 
   <section id="projects" class="container">
-    <div class="projects-head">
-      <h2>{s['projects.title']}</h2>
-      <div class="view-tools">
-        <button id="flow-toggle" class="tool" type="button" aria-label={s['projects.flow']} title={s['projects.flow']}>⇄</button>
-        <button id="count-toggle" class="tool" type="button" aria-label={s['projects.count']} title={s['projects.count']}>3</button>
-      </div>
-    </div>
-    <ul class="grid" id="projects-grid">
-      {projects.map((p) => (
-        <li class="card">
-          <h3>{p.title[lang]}</h3>
-          <p class="muted">{p.description[lang]}</p>
-          <p class="tags">{p.tags.map((tag) => <span>{tag}</span>)}</p>
-          <p class="card-links">
-            {p.repo && <a href={p.repo} target="_blank" rel="noopener">{s['projects.repo']}</a>}
-            {p.demo && <a href={p.demo} target="_blank" rel="noopener">{s['projects.demo']}</a>}
-          </p>
-        </li>
-      ))}
-    </ul>
+    <h2>{s['projects.title']}</h2>
+    <ProjectCards lang={lang} limit={4} />
+    <p><a class="btn btn-ghost" href={localePath(lang, '/projects/')}>{s['projects.all']} ›</a></p>
   </section>
 
   <section id="contact" class="container narrow">
@@ -60,29 +43,6 @@ const s = t(lang);
     </div>
   </section>
 </Base>
-
-<script>
-  const grid = document.getElementById('projects-grid')!;
-  const flowBtn = document.getElementById('flow-toggle')!;
-  const countBtn = document.getElementById('count-toggle')!;
-  // Arranca con una cantidad que entre en pantalla; sin JS queda el auto-fill del CSS.
-  let n = innerWidth < 640 ? 1 : innerWidth < 1000 ? 2 : 3;
-  const render = () => {
-    grid.style.setProperty('--n', String(n));
-    countBtn.textContent = String(n);
-    flowBtn.textContent = grid.dataset.flow === 'col' ? '⇅' : '⇄';
-  };
-  grid.dataset.flow = 'row';
-  render();
-  flowBtn.addEventListener('click', () => {
-    grid.dataset.flow = grid.dataset.flow === 'col' ? 'row' : 'col';
-    render();
-  });
-  countBtn.addEventListener('click', () => {
-    n = (n % 4) + 1;
-    render();
-  });
-</script>
 
 <style>
   .hero {
@@ -99,33 +59,6 @@ const s = t(lang);
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; margin-top: 2rem; }
   .avatar { justify-self: center; width: min(100%, 320px); height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 50%; }
   .narrow p { max-width: 60rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.5rem; list-style: none; padding: 0; }
-  /* row: n ítems por fila; col: n ítems por columna, las columnas sobrantes scrollean en horizontal */
-  .grid[data-flow='row'] { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
-  .grid[data-flow='col'] {
-    grid-auto-flow: column;
-    grid-template-rows: repeat(var(--n), auto);
-    grid-template-columns: none;
-    grid-auto-columns: minmax(16rem, 1fr);
-    overflow-x: auto;
-  }
-  .projects-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .view-tools { display: flex; gap: 0.5rem; }
-  .tool {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--text);
-    border-radius: 4px;
-    width: 2rem;
-    height: 2rem;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  .card { border:1px solid var(--border); border-radius: 6px; padding: 1.5rem; background: var(--surface); }
-  .card h3 { margin-top: 0; }
-  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; }
-  .tags span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.5rem; }
-  .card-links { display: flex; gap: 1rem; margin-bottom: 0; }
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 2rem; }
     .avatar { grid-row: 1; width: 180px; }
