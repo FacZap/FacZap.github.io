@@ -12,6 +12,7 @@ export const site = {
     linkedin: 'https://www.linkedin.com/in/facundozapata/',
     youtube: 'https://www.youtube.com/',
     x: 'https://x.com/',
+    hackernews: 'https://news.ycombinator.com/user?id=faczap'
   },
   // Token de Cloudflare Web Analytics; vacío = sin analytics
   cfAnalyticsToken: '',
