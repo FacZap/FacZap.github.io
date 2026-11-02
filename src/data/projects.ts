@@ -3,29 +3,25 @@ export const projects = [
   // ── Casos de estudio ──────────────────────────────────────────────
   {
     title: {
-      es: 'TRABAJO: Simulación íntegra por software de una planta de lecitina (Amberes, Bélgica)',
-      en: 'WORK: Fully software-based simulation of a lecithin plant (Antwerp, Belgium)',
+      es: 'PROYECTO LABORAL: Simulación íntegra por software de una planta de lecitina (Amberes, Bélgica)',
+      en: 'WORK PROJECT: Fully software-based simulation of a lecithin plant (Antwerp, Belgium)',
     },
     description: {
-      es: 'TRABAJO: Desarrollo remoto, de punta a punta y con asistencia de Claude Code, de una simulación que reemplaza toda la E/S física para validar la lógica de control, probar pantallas y capacitar operadores sin hardware de campo. STEP 7 Classic con PLCSIM (S7-400) como PLC virtual, iFIX como SCADA/HMI y NetToPLCSim como puente (TCP 102), sobre dos máquinas virtuales. Resultado: secuencias de control batch validadas con menor riesgo antes de la puesta en marcha en campo.',
-      en: 'WORK: Remote, end-to-end development, assisted by Claude Code, of a simulation that replaces all physical I/O to validate control logic, test screens and train operators with no field hardware. STEP 7 Classic with PLCSIM (S7-400) as the virtual PLC, iFIX as SCADA/HMI and NetToPLCSim as the bridge (TCP 102), across two virtual machines. Outcome: batch control sequences validated with lower risk before field commissioning.',
+      es: 'PROYECTO LABORAL: Desarrollo remoto, de punta a punta y con asistencia de Claude Code, de una simulación que reemplaza toda la E/S física para validar la lógica de control, probar pantallas y capacitar operadores sin hardware de campo. STEP 7 Classic con PLCSIM (S7-400) como PLC virtual, iFIX como SCADA/HMI y NetToPLCSim como puente (TCP 102), sobre dos máquinas virtuales. Resultado: secuencias de control batch validadas con menor riesgo antes de la puesta en marcha en campo.',
+      en: 'WORK PROJECT: Remote, end-to-end development, assisted by Claude Code, of a simulation that replaces all physical I/O to validate control logic, test screens and train operators with no field hardware. STEP 7 Classic with PLCSIM (S7-400) as the virtual PLC, iFIX as SCADA/HMI and NetToPLCSim as the bridge (TCP 102), across two virtual machines. Outcome: batch control sequences validated with lower risk before field commissioning.',
     },
-    tags: ['STEP 7', 'S7-PLCSIM', 'iFIX', 'NetToPLCSim', 'Claude Code'],
-    repo: 'https://github.com/TODO/simulacion-planta-lecitina',
-    demo: '',
+    tags: ['STEP 7', 'S7-PLCSIM', 'iFIX', 'NetToPLCSim', 'Claude Code']
   },
   {
     title: {
-      es: 'TRABAJO: Puesta en marcha en una planta agroindustrial (Uberlândia, Brasil)',
-      en: 'WORK: Commissioning at an agro-industrial plant (Uberlândia, Brazil)',
+      es: 'PROYECTO LABORAL: Puesta en marcha en una planta agroindustrial (Uberlândia, Brasil)',
+      en: 'WORK PROJECT: Commissioning at an agro-industrial plant (Uberlândia, Brazil)',
     },
     description: {
-      es: 'TRABAJO: Comisionamiento en sitio de sistemas PLC/SCADA de una planta agroindustrial de una multinacional, de forma presencial durante 2 semanas. Validación de E/S contra P&ID, pruebas SAT, de señal, loop testing y pruebas de seguridad, en un equipo multilingüe (inglés, con nociones de portugués).',
-      en: 'WORK: On-site commissioning of PLC/SCADA systems at a multinational agro-industrial plant, in person for 2 weeks. I/O validation against P&IDs, SAT, signal and loop testing, and safety tests, within a multilingual team (English, with basic Portuguese).',
+      es: 'PROYECTO LABORAL: Comisionamiento en sitio de sistemas PLC/SCADA de una planta agroindustrial de una multinacional, de forma presencial durante 2 semanas. Validación de E/S contra P&ID, pruebas SAT, de señal, loop testing y pruebas de seguridad, en un equipo multilingüe (inglés, con nociones de portugués).',
+      en: 'WORK PROJECT: On-site commissioning of PLC/SCADA systems at a multinational agro-industrial plant, in person for 2 weeks. I/O validation against P&IDs, SAT, signal and loop testing, and safety tests, within a multilingual team (English, with basic Portuguese).',
     },
-    tags: ['PLC', 'SCADA', 'SAT', 'Loop testing', 'P&ID'],
-    repo: 'https://github.com/TODO/puesta-en-marcha-uberlandia',
-    demo: '',
+    tags: ['PLC', 'SCADA', 'SAT', 'Loop testing', 'P&ID']
   },
 
   // ── Proyectos personales ──────────────────────────────────────────
