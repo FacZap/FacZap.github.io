@@ -8,6 +8,19 @@ const { lang } = Astro.props;
 const s = t(lang);
 ---
 <Base lang={lang} title={s['projects.title']}>
+  <script is:inline slot="head">
+    // Aplica la vista guardada sobre <html> antes del primer pintado (el grid todavía no existe).
+    let n = innerWidth < 640 ? 1 : innerWidth < 1000 ? 2 : 3;
+    let flow = 'row';
+    try {
+      const saved_flow = localStorage.getItem('saved-flow');
+      const saved_count = parseInt(localStorage.getItem('saved-count'));
+      if (saved_flow === 'row' || saved_flow === 'col') flow = saved_flow;
+      if (saved_count > 0 && saved_count < 5) n = saved_count;
+    } catch {}
+    document.documentElement.dataset.flow = flow;
+    document.documentElement.style.setProperty('--n', String(n));
+  </script>
   <section class="container">
     <div class="projects-head">
       <h1>{s['projects.title']}</h1>
@@ -26,12 +39,21 @@ const s = t(lang);
   const countBtn = document.getElementById('count-toggle')!;
   // Arranca con una cantidad que entre en pantalla; sin JS queda el auto-fill del CSS.
   let n = innerWidth < 640 ? 1 : innerWidth < 1000 ? 2 : 3;
+  grid.dataset.flow = 'row';
+  try {
+        const saved_flow = localStorage.getItem('saved-flow');
+        const saved_count = localStorage.getItem('saved-count');
+        if (saved_flow) grid.dataset.flow = saved_flow;
+        if (saved_count) n = (parseInt(saved_count) > 0 && parseInt(saved_count) < 5) ? parseInt(saved_count) : n;
+        } catch {}
   const render = () => {
     grid.style.setProperty('--n', String(n));
     countBtn.textContent = String(n);
     flowBtn.textContent = grid.dataset.flow === 'col' ? '⇅' : '⇄';
+    document.documentElement.dataset.flow = grid.dataset.flow!; // el CSS lee el flow desde <html>
+    localStorage.setItem('saved-count', String(n));
+    localStorage.setItem('saved-flow', grid.dataset.flow);
   };
-  grid.dataset.flow = 'row';
   render();
   flowBtn.addEventListener('click', () => {
     grid.dataset.flow = grid.dataset.flow === 'col' ? 'row' : 'col';

@@ -24,8 +24,8 @@ const s = t(lang);
 <style>
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.5rem; list-style: none; padding: 0; }
   /* row: n ítems por fila; col: n ítems por columna, las columnas sobrantes scrollean en horizontal */
-  .grid[data-flow='row'] { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
-  .grid[data-flow='col'] {
+  :global(html[data-flow='row']) .grid { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
+  :global(html[data-flow='col']) .grid {
     grid-auto-flow: column;
     grid-template-rows: repeat(var(--n), auto);
     grid-template-columns: none;
