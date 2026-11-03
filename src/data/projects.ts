@@ -1,8 +1,11 @@
 // Lista curada: agregá, quitá o reordená proyectos acá.
+// slug: URL de la página dedicada (/projects/<slug>/).
+// link (opcional): URL externa, se abre en pestaña nueva.
 // summary (opcional): texto corto para las tarjetas del Home; si está vacío se usa description.
 export const projects = [
   // ── Casos de estudio ──────────────────────────────────────────────
   {
+    slug: 'simulacion-planta-lecitina',
     title: {
       es: 'PROYECTO LABORAL: Simulación íntegra por software de una planta de lecitina (Amberes, Bélgica)',
       en: 'WORK PROJECT: Fully software-based simulation of a lecithin plant (Antwerp, Belgium)',
@@ -18,6 +21,7 @@ export const projects = [
     tags: ['STEP 7', 'S7-PLCSIM', 'iFIX', 'NetToPLCSim']
   },
   {
+    slug: 'puesta-en-marcha-extr-uberlandia',
     title: {
       es: 'PROYECTO LABORAL: Puesta en marcha en una planta agroindustrial (Uberlândia, Brasil)',
       en: 'WORK PROJECT: Commissioning at an agro-industrial plant (Uberlândia, Brazil)',
@@ -35,6 +39,7 @@ export const projects = [
 
   // ── Proyectos personales ──────────────────────────────────────────
   {
+    slug: 'pipeline-datos-industriales',
     title: {
       es: 'Pipeline de datos industriales (2026)',
       en: 'Industrial data pipeline (2026)',
@@ -52,6 +57,7 @@ export const projects = [
     demo: '',
   },
   {
+    slug: 'extension-claude-tabs',
     title: {
       es: 'Extensión de navegador con la API de Claude',
       en: 'Browser extension built on the Claude API',
@@ -69,6 +75,7 @@ export const projects = [
     demo: '',
   },
   {
+    slug: 'herramientas-propias',
     title: {
       es: 'Herramientas propias',
       en: 'Own tooling',
@@ -86,6 +93,7 @@ export const projects = [
     demo: '',
   },
   {
+    slug: 'presencia-web',
     title: {
       es: 'Presencia web',
       en: 'Web presence',
@@ -116,6 +124,7 @@ export const projects = [
   //   demo: '',
   // },
   {
+    slug: 'impresion-3d',
     title: {
       es: 'Impresión 3D: diseño y venta local',
       en: '3D printing: design and local sales',
@@ -133,6 +142,7 @@ export const projects = [
     demo: '',
   },
   {
+    slug: 'it-linux',
     title: {
       es: 'IT y sistemas - Linux',
       en: 'IT and systems - Linux',

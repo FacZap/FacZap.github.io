@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { projects } from '../data/projects';
+import { t, localePath, switchPath, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang; project: (typeof projects)[number] }
+const { lang, project: p } = Astro.props;
+const s = t(lang);
+---
+<Base lang={lang} title={p.title[lang]} description={p.description[lang]}>
+  <article class="container narrow">
+    <p><a href={localePath(lang, '/projects/')}>{s['projects.back']}</a></p>
+    <h1>{p.title[lang]}</h1>
+    <p class="muted">{p.description[lang]}</p>
+    <p class="tags">{p.tags.map((tag) => <span>{tag}</span>)}</p>
+    <p class="links">
+      {p.link && <a href={p.link} target="_blank" rel="noopener">{s['projects.link']}</a>}
+      {p.repo && <a href={p.repo} target="_blank" rel="noopener">{s['projects.repo']}</a>}
+      {p.demo && <a href={p.demo} target="_blank" rel="noopener">{s['projects.demo']}</a>}
+    </p>
+    <p class="muted meta"><a href={switchPath(lang, Astro.url.pathname)}>{s['lang.switch']}</a></p>
+  </article>
+</Base>
+
+<style>
+  .narrow { max-width: 48rem; padding-block: 3rem; }
+  .meta { font-size: 0.85rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; }
+  .tags span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.5rem; }
+  .links { display: flex; gap: 1rem; }
+</style>

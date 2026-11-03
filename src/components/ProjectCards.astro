@@ -1,6 +1,6 @@
 ---
 import { projects } from '../data/projects';
-import { t, type Lang } from '../i18n/ui';
+import { t, localePath, type Lang } from '../i18n/ui';
 
 interface Props { lang: Lang; limit?: number }
 const { lang, limit } = Astro.props;
@@ -9,10 +9,11 @@ const s = t(lang);
 <ul class:list={['grid', { summary: limit }]} id="projects-grid">
   {projects.slice(0, limit).map((p) => (
     <li class="card">
-      <h3>{p.title[lang]}</h3>
+      <h3><a href={localePath(lang, `/projects/${p.slug}/`)}>{p.title[lang]}</a></h3>
       <p class="muted">{(limit && p.summary?.[lang]) || p.description[lang]}</p>
       <p class="tags">{p.tags.map((tag) => <span>{tag}</span>)}</p>
       <p class="card-links">
+        {p.link && <a href={p.link} target="_blank" rel="noopener">{s['projects.link']}</a>}
         {p.repo && <a href={p.repo} target="_blank" rel="noopener">{s['projects.repo']}</a>}
         {p.demo && <a href={p.demo} target="_blank" rel="noopener">{s['projects.demo']}</a>}
       </p>
