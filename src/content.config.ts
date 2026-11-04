@@ -12,4 +12,11 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+// Opcional: src/content/projects/<lang>/<slug>.md agrega contenido largo a /projects/<slug>/
+// Sin frontmatter: los metadatos viven en src/data/projects.ts
+const projects = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/projects' }),
+  schema: z.object({}),
+});
+
+export const collections = { blog, projects };

@@ -2,6 +2,8 @@
 // slug: URL de la página dedicada (/projects/<slug>/).
 // link (opcional): URL externa, se abre en pestaña nueva.
 // summary (opcional): texto corto para las tarjetas del Home; si está vacío se usa description.
+// Contenido largo (opcional): src/content/projects/<es|en>/<slug>.md (Markdown: tablas, imágenes ./img.png, HTML)
+// se muestra debajo de la cabecera en la página del proyecto.
 export const projects = [
   // ── Casos de estudio ──────────────────────────────────────────────
   {
