@@ -55,7 +55,7 @@ export const projects = [
       en: 'Heat Exchange Network Control',
     },
     demo: 'https://drive.google.com/file/d/1xIV67fyXAJmTA5jQJEvdqG1tNHt1FF4I/view?usp=sharing',
-    tags: ['Academic'],
+    tags: ['Academic', 'MATLAB', 'Simulink', 'Control'],
     link: 'https://github.com/FacZap/TesinaZapata2025/tree/main',
   },
   
