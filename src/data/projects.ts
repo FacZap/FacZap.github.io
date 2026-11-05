@@ -20,7 +20,8 @@ export const projects = [
       es: 'PROYECTO LABORAL: Desarrollo remoto, de punta a punta, de una simulación que reemplaza toda la E/S física para validar la lógica de control, probar pantallas y capacitar operadores sin hardware de campo. STEP 7 Classic con PLCSIM (S7-400) como PLC virtual, iFIX como SCADA/HMI y NetToPLCSim como puente (TCP 102), sobre dos máquinas virtuales. Resultado: secuencias de control batch validadas con menor riesgo antes de la puesta en marcha en campo.',
       en: 'WORK PROJECT: Remote, end-to-end development of a simulation that replaces all physical I/O to validate control logic, test screens and train operators with no field hardware. STEP 7 Classic with PLCSIM (S7-400) as the virtual PLC, iFIX as SCADA/HMI and NetToPLCSim as the bridge (TCP 102), across two virtual machines. Outcome: batch control sequences validated with lower risk before field commissioning.',
     },
-    tags: ['STEP 7', 'S7-PLCSIM', 'iFIX', 'NetToPLCSim']
+    tags: ['STEP 7', 'S7-PLCSIM', 'iFIX', 'NetToPLCSim'],
+    docu: '',
   },
   {
     slug: 'puesta-en-marcha-extr-uberlandia',
@@ -36,7 +37,8 @@ export const projects = [
       es: 'PROYECTO LABORAL: Comisionamiento en sitio de sistemas PLC/SCADA de una planta agroindustrial de una multinacional, de forma presencial durante 2 semanas. Validación de E/S contra P&ID, pruebas SAT, de señal, loop testing y pruebas de seguridad, en un equipo multilingüe (inglés, con nociones de portugués).',
       en: 'WORK PROJECT: On-site commissioning of PLC/SCADA systems at a multinational agro-industrial plant, in person for 2 weeks. I/O validation against P&IDs, SAT, signal and loop testing, and safety tests, within a multilingual team (English, with basic Portuguese).',
     },
-    tags: ['PLC', 'SCADA', 'SAT', 'Loop testing', 'P&ID']
+    tags: ['PLC', 'SCADA', 'SAT', 'Loop testing', 'P&ID'],
+    docu: '',
   },
 
   // ── Proyectos personales ──────────────────────────────────────────
@@ -54,9 +56,9 @@ export const projects = [
       es: 'Control de Redes de Intercambio Calórico',
       en: 'Heat Exchange Network Control',
     },
-    demo: 'https://drive.google.com/file/d/1xIV67fyXAJmTA5jQJEvdqG1tNHt1FF4I/view?usp=sharing',
     tags: ['Academic', 'MATLAB', 'Simulink', 'Control'],
-    link: 'https://github.com/FacZap/TesinaZapata2025/tree/main',
+    repo : 'https://github.com/FacZap/TesinaZapata2025/tree/main',
+    docu: 'https://drive.google.com/file/d/1xIV67fyXAJmTA5jQJEvdqG1tNHt1FF4I/view?usp=sharing',
   },
   
   {
@@ -76,6 +78,7 @@ export const projects = [
     tags: ['OPC UA', 'PostgreSQL', 'Python', 'iFIX', 'S7-PLCSIM'],
     repo: 'https://github.com/TODO/pipeline-datos-industriales',
     demo: '',
+    docu: '',
   },
   {
     slug: 'extension-claude-tabs',
@@ -91,9 +94,10 @@ export const projects = [
       es: 'Organizador y archivador automático de pestañas para Chrome y Firefox que usa la API de Claude.',
       en: 'Automatic tab organizer and archiver for Chrome and Firefox that uses the Claude API.',
     },
-    tags: ['Claude API', 'Chrome', 'Firefox'],
-    repo: 'https://github.com/TODO/extension-organizador-tabs',
+    tags: ['Claude API', 'Chrome', 'Firefox', 'JavaScript'],
+    repo: 'https://github.com/FacZap/TabSorterAI',
     demo: '',
+    docu: '',
   },
   {
     slug: 'herramientas-propias',
@@ -112,6 +116,7 @@ export const projects = [
     tags: ['AutoHotkey', 'Git', 'Python', 'spotipy', 'yt-dlp', 'Claude Code'],
     repo: 'https://github.com/FacZap/AutoHotkey-Stash',
     demo: '',
+    docu: '',
   },
   {
     slug: 'presencia-web',
@@ -128,8 +133,9 @@ export const projects = [
       en: 'Bilingual CV/portfolio site on GitHub Pages and a React/Vite site deployed on Vercel.',
     },
     tags: ['GitHub Pages', 'React', 'Vite', 'Vercel'],
-    repo: 'https://github.com/TODO/portfolio',
-    demo: 'https://TODO.github.io/portfolio',
+    repo: 'https://github.com/faczap/faczap.github.io',
+    demo: '',
+    docu: '',
   },
   // {
   //   title: {
@@ -159,8 +165,9 @@ export const projects = [
       en: 'Designed, printed and sold 3D-printed parts to local customers in Rosario. Parametric modeling in Fusion 360 and OpenSCAD for functional parts (phone stands, supports, clips, brackets) and process tuning in Bambu Studio and OrcaSlicer: flow-rate and shrinkage calibration, press-fit tolerances and multi-material setups (PLA, PETG, TPU) on a Bambu Lab A1.',
     },
     tags: ['Fusion 360', 'OpenSCAD', 'Bambu Studio', 'OrcaSlicer', 'FDM'],
-    repo: 'https://github.com/TODO/impresion-3d',
+    repo: '',
     demo: '',
+    docu: '',
   },
   {
     slug: 'it-linux',
@@ -173,11 +180,12 @@ export const projects = [
       en: '',
     },
     description: {
-      es: 'Dual boot Ubuntu/Windows en una ThinkPad y corrección de un congelamiento del medidor de batería ajustando la gestión de energía (TLP); scripts de PowerShell para encontrar qué llenaba un disco de sistema casi lleno.',
-      en: 'Ubuntu/Windows dual-boot setup on a ThinkPad and a fix for a battery gauge freeze by correcting power-management (TLP) settings; PowerShell scripts to find what was filling a nearly full system drive.',
+      es: 'Dual boot Ubuntu/Windows en una ThinkPad y corrección de un congelamiento del medidor de batería ajustando la gestión de energía (TLP); scripts de PowerShell para debuggear problemas de batería',
+      en: 'Ubuntu/Windows dual-boot setup on a ThinkPad and a fix for a battery gauge freeze by correcting power-management (TLP) settings; PowerShell scripts to debug battery problems.',
     },
     tags: ['Ubuntu', 'Windows', 'TLP', 'PowerShell'],
-    repo: 'https://github.com/TODO/it-sistemas',
+    repo: '',
     demo: '',
+    docu: '',
   },
 ];

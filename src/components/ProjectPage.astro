@@ -22,6 +22,7 @@ const Content = entry && (await render(entry)).Content;
       {p.link && <a href={p.link} target="_blank" rel="noopener">{s['projects.link']}</a>}
       {p.repo && <a href={p.repo} target="_blank" rel="noopener">{s['projects.repo']}</a>}
       {p.demo && <a href={p.demo} target="_blank" rel="noopener">{s['projects.demo']}</a>}
+      {p.docu && <a href={p.docu} target="_blank" rel="noopener">{s['projects.docu']}</a>}
     </p>
     {Content && <div class="body"><Content /></div>}
     <p class="muted meta"><a href={switchPath(lang, Astro.url.pathname)}>{s['lang.switch']}</a></p>
