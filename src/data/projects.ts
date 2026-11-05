@@ -41,6 +41,25 @@ export const projects = [
 
   // ── Proyectos personales ──────────────────────────────────────────
   {
+    slug: 'proyecto-final-ingenieria',
+    title: {
+      es: 'Proyecto final de Ingeniería Electrónica',
+      en: 'Final year project for Electronics Engineering',
+    },
+    summary: {
+      es: 'Tesina Zapata Facundo 2025',
+      en: 'Zapata Facundo Thesis 2025',
+    },
+    description: {
+      es: 'Control de Redes de Intercambio Calórico',
+      en: 'Heat Exchange Network Control',
+    },
+    demo: 'https://drive.google.com/file/d/1xIV67fyXAJmTA5jQJEvdqG1tNHt1FF4I/view?usp=sharing',
+    tags: ['Academic'],
+    repo: 'https://github.com/FacZap/TesinaZapata2025/tree/main',
+  },
+  
+  {
     slug: 'pipeline-datos-industriales',
     title: {
       es: 'Pipeline de datos industriales (2026)',
