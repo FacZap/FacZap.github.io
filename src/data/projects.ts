@@ -56,7 +56,7 @@ export const projects = [
     },
     demo: 'https://drive.google.com/file/d/1xIV67fyXAJmTA5jQJEvdqG1tNHt1FF4I/view?usp=sharing',
     tags: ['Academic'],
-    repo: 'https://github.com/FacZap/TesinaZapata2025/tree/main',
+    link: 'https://github.com/FacZap/TesinaZapata2025/tree/main',
   },
   
   {
