@@ -6,9 +6,10 @@ interface Props { lang: Lang; limit?: number }
 const { lang, limit } = Astro.props;
 const s = t(lang);
 ---
-<ul class:list={['grid', { summary: limit }]} id="projects-grid">
+{!limit && <input type="search" id="projects-search" placeholder={s['projects.search']} />}
+<ul class:list={['grid', { summary: limit }]} id="projects-grid"> <!-- <ul class={limit ? "grid summary" : "grid"}> -->
   {projects.slice(0, limit).map((p) => (
-    <li class="card">
+    <li class="card" data-title={p.title[lang].toLowerCase()} data-tags={p.tags.map((tag) => tag.toLowerCase())}>
       <h3><a href={localePath(lang, `/projects/${p.slug}/`)}>{p.title[lang]}</a></h3>
       <p class="muted">{(limit && p.summary?.[lang]) || p.description[lang]}</p>
       <p class="tags">{p.tags.map((tag) => <span>{tag}</span>)}</p>
@@ -22,7 +23,18 @@ const s = t(lang);
   ))}
 </ul>
 
+<script>
+  const input = document.querySelector<HTMLInputElement>('#projects-search');
+  const cards = document.querySelectorAll<HTMLElement>('#projects-grid .card');
+  input?.addEventListener('input', () => {
+    const q = input.value.toLowerCase().trim();
+    cards.forEach((c) => { c.hidden = !c.dataset.title!.includes(q) && !c.dataset.tags!.includes(q); });
+  });
+</script>
+
 <style>
+  #projects-search { width: 100%; margin-bottom: 1.5rem; padding: 0.5rem; }
+  .card[hidden] { display: none; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.5rem; list-style: none; padding: 0; }
   /* row: n ítems por fila; col: n ítems por columna, las columnas sobrantes scrollean en horizontal */
   .grid[data-flow='row'] { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
