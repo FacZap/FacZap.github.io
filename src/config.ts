@@ -15,5 +15,5 @@ export const site = {
     hackernews: 'https://news.ycombinator.com/user?id=faczap'
   },
   // Token de Cloudflare Web Analytics; vacío = sin analytics
-  cfAnalyticsToken: '',
+  cfAnalyticsToken: '3ccf0695acaa4e9b98f625ddb236aa5e',
 };
