@@ -12,7 +12,6 @@ const s = t(lang);
     <div class="projects-head">
       <h1>{s['projects.title']}</h1>
       <div class="view-tools">
-        <button id="flow-toggle" class="tool" type="button" aria-label={s['projects.flow']} title={s['projects.flow']}>⇄</button>
         <button id="count-toggle" class="tool" type="button" aria-label={s['projects.count']} title={s['projects.count']}>3</button>
       </div>
     </div>
@@ -22,29 +21,20 @@ const s = t(lang);
 
 <script>
   const grid = document.getElementById('projects-grid')!;
-  const flowBtn = document.getElementById('flow-toggle')!;
   const countBtn = document.getElementById('count-toggle')!;
   // Arranca con una cantidad que entre en pantalla; sin JS queda el auto-fill del CSS.
   let n = innerWidth < 640 ? 1 : innerWidth < 1000 ? 2 : 3;
   grid.dataset.flow = 'row';
   try {
-        const saved_flow = localStorage.getItem('saved-flow');
         const saved_count = localStorage.getItem('saved-count');
-        if (saved_flow) grid.dataset.flow = saved_flow;
         if (saved_count) n = (parseInt(saved_count) > 0 && parseInt(saved_count) < 5) ? parseInt(saved_count) : n;
         } catch {}
   const render = () => {
     grid.style.setProperty('--n', String(n));
     countBtn.textContent = String(n);
-    flowBtn.textContent = grid.dataset.flow === 'col' ? '⇅' : '⇄';
     localStorage.setItem('saved-count', String(n));
-    localStorage.setItem('saved-flow', grid.dataset.flow);
   };
   render();
-  flowBtn.addEventListener('click', () => {
-    grid.dataset.flow = grid.dataset.flow === 'col' ? 'row' : 'col';
-    render();
-  });
   countBtn.addEventListener('click', () => {
     n = (n % 4) + 1;
     render();

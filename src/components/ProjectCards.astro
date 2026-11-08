@@ -36,15 +36,8 @@ const s = t(lang);
   #projects-search { width: 100%; margin-bottom: 1.5rem; padding: 0.5rem; }
   .card[hidden] { display: none; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.5rem; list-style: none; padding: 0; }
-  /* row: n ítems por fila; col: n ítems por columna, las columnas sobrantes scrollean en horizontal */
+  /* n ítems por fila */
   .grid[data-flow='row'] { grid-template-columns: repeat(var(--n), minmax(0, 1fr)); }
-  .grid[data-flow='col'] {
-    grid-auto-flow: column;
-    grid-template-rows: repeat(var(--n), auto);
-    grid-template-columns: none;
-    grid-auto-columns: minmax(16rem, 1fr);
-    overflow-x: auto;
-  }
   .card { border:1px solid var(--border); border-radius: 6px; padding: 1.5rem; background: var(--surface); }
   .card h3 { margin-top: 0; }
   /* En el resumen del Home, la descripción se corta en 4 líneas con "…" */
