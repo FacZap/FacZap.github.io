@@ -6,7 +6,7 @@ Proyecto de Ingeniería (A20 – Proyecto II) · Ingeniería Electrónica · FCE
 - **Director:** Dr. Ing. Patricio Luppi
 - **Asesor / director externo:** Dr. Ing. Lautaro Braccia (CIFASIS, CONICET-UNR)
 - **Inicio:** marzo 2025 · **Repositorio:** https://github.com/FacZap/TesinaZapata2025
-- **Informe final:** [`INFORME FINAL ZapataFacundo 2025 (1).pdf`](INFORME%20FINAL%20ZapataFacundo%202025%20(1).pdf) (108 págs.)
+- **Informe final:** [`INFORME FINAL ZapataFacundo 2025.pdf`](https://drive.google.com/file/d/1xIV67fyXAJmTA5jQJEvdqG1tNHt1FF4I/view?usp=sharing) (108 págs.)
 
 ## De qué trata
 

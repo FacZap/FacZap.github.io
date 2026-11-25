@@ -20,7 +20,7 @@ export const projects = [
       es: 'PROYECTO LABORAL: Desarrollo remoto, de punta a punta, de una simulación que reemplaza toda la E/S física para validar la lógica de control, probar pantallas y capacitar operadores sin hardware de campo. STEP 7 Classic con PLCSIM (S7-400) como PLC virtual, iFIX como SCADA/HMI y NetToPLCSim como puente (TCP 102), sobre dos máquinas virtuales. Resultado: secuencias de control batch validadas con menor riesgo antes de la puesta en marcha en campo.',
       en: 'WORK PROJECT: Remote, end-to-end development of a simulation that replaces all physical I/O to validate control logic, test screens and train operators with no field hardware. STEP 7 Classic with PLCSIM (S7-400) as the virtual PLC, iFIX as SCADA/HMI and NetToPLCSim as the bridge (TCP 102), across two virtual machines. Outcome: batch control sequences validated with lower risk before field commissioning.',
     },
-    tags: ['STEP 7', 'S7-PLCSIM', 'iFIX', 'NetToPLCSim'],
+    tags: ['STEP 7', 'S7-PLCSIM', 'iFIX', 'NetToPLCSim', 'Siemens', 'Simulation', 'SCADA', 'PLC', 'Operator Training', 'Remote Work'],
     docu: '',
   },
   {
@@ -37,7 +37,7 @@ export const projects = [
       es: 'PROYECTO LABORAL: Comisionamiento en sitio de sistemas PLC/SCADA de una planta agroindustrial de una multinacional, de forma presencial durante 2 semanas. Validación de E/S contra P&ID, pruebas SAT, de señal, loop testing y pruebas de seguridad, en un equipo multilingüe (inglés, con nociones de portugués).',
       en: 'WORK PROJECT: On-site commissioning of PLC/SCADA systems at a multinational agro-industrial plant, in person for 2 weeks. I/O validation against P&IDs, SAT, signal and loop testing, and safety tests, within a multilingual team (English, with basic Portuguese).',
     },
-    tags: ['PLC', 'SCADA', 'SAT', 'Loop testing', 'P&ID'],
+    tags: ['PLC', 'SCADA', 'SAT', 'In Site Comissioning', 'P&ID', 'Rockwell/Allen Bradley', 'PlantPAX', 'Studio 5000', 'FactoryTalk'],
     docu: '',
   },
 
