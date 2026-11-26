@@ -25,9 +25,22 @@ const Content = entry && (await render(entry)).Content;
       {p.docu && <a href={p.docu} target="_blank" rel="noopener">{s['projects.docu']}</a>}
     </p>
     {Content && <div class="body"><Content /></div>}
+    <dialog id="zoom"><img alt="" /></dialog>
     <p class="muted meta"><a href={switchPath(lang, Astro.url.pathname)}>{s['lang.switch']}</a></p>
   </article>
 </Base>
+
+<script>
+  const dlg = document.getElementById('zoom') as HTMLDialogElement;
+  const big = dlg.querySelector('img')!;
+  document.querySelectorAll<HTMLImageElement>('.body img').forEach((img) =>
+    img.addEventListener('click', () => {
+      big.src = img.currentSrc || img.src; // currentSrc vacío si la imagen lazy aún no cargó
+      big.alt = img.alt;
+      dlg.showModal();
+    }));
+  dlg.addEventListener('click', () => dlg.close()); // Esc lo maneja <dialog>
+</script>
 
 <style>
   .narrow { max-width: 48rem; padding-block: 3rem; }
@@ -35,7 +48,10 @@ const Content = entry && (await render(entry)).Content;
   .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.75rem; }
   .tags span { border: 1px solid var(--border); border-radius: 3px; padding: 0.1rem 0.5rem; }
   .links { display: flex; gap: 1rem; }
-  .body :global(img) { max-width: 100%; height: auto; border-radius: 6px; }
+  .body :global(img) { max-width: 100%; height: auto; border-radius: 6px; cursor: zoom-in; }
+  #zoom { padding: 0; border: none; background: none; max-width: 95vw; max-height: 95vh; cursor: zoom-out; }
+  #zoom::backdrop { background: rgb(0 0 0 / 0.8); }
+  #zoom img { display: block; max-width: 95vw; max-height: 95vh; }
   .body :global(pre) { padding: 1rem; border-radius: 6px; overflow-x: auto; }
   .body :global(table) { border-collapse: collapse; display: block; overflow-x: auto; }
   .body :global(th), .body :global(td) { border: 1px solid var(--border); padding: 0.4rem 0.6rem; }
